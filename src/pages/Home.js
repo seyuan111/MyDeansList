@@ -3,16 +3,17 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import 'tailwindcss/tailwind.css';
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
-import 'bootstrap/dist/css/bootstrap.css'
 
-const Home = ({Container, Card, Button, Row, Col}) => {
+const Home = () => {
   const [posts, setPosts] = useState([]) //empty array in the state
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`http://localhost:5500/posts/`)
-      setPost(res.data)
+      setPosts(res.data)
     }
     fetchPosts()
   },[])
@@ -25,26 +26,35 @@ const Home = ({Container, Card, Button, Row, Col}) => {
       console.log(`There is an issue deleteing this post`, error)
     }
   }
-
+  
   return (
-    <Container>
-      <Row>
+    <div>
+      <NavBar />
+      <div className="mt-4">
+        <h1 className="text-xl font-bold mb-6">My Deans List:</h1>
         {posts.map((post) => (
-          <Col md={4} className="mb-4" key={post._id}>
-            <Card className="w-8">
-              <Card.Img variant="top" src={post.image}></Card.Img>
-              <Card.Body>
-                <Card.Title>Name: {post.name}</Card.Title>
-                <Link href={`/posts/${post._id}`}>
-                  <Button className="mr-4 bg-blue-500 text-white">More Info</Button>
-                </Link>
-                  <Button className="mr-4 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+          <div className="mb-4" key={post._id}>
+            <div className="w-8 justify-center items-center">
+              <img variant="top" src={post.image}></img>
+              <div>
+                <h1 className="my-6">Name: {post.name}</h1>
+                <p className="my-6">Age: {post.age}</p>
+                <p className="my-6">Major: {post.major}</p>
+                <p className="my-6">Occupation: {post.occupation}</p>
+                <p className="my-6">Contact: {post.contact}</p>
+                  <div className="flex">
+                    <Link href={`/posts/${post._id}`}>
+                      <button className="px-4 py-2 rounded mr-4 bg-blue-500 text-white">More Info</button>
+                    </Link>
+                      <button className="px-4 py-2 rounded mr-4 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</button>
+                  </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </Row>
-    </Container>
+      </div>
+      <Footer />
+    </div>
   )
 }
 

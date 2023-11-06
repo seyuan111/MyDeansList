@@ -4,9 +4,8 @@ import axios from 'axios'
 import Link from 'next/link'
 import 'tailwindcss/tailwind.css';
 import { useRouter } from 'next/router'
-import 'bootstrap/dist/css/bootstrap.css'
 
-const PostPage = ({Container, Card}) => {
+const PostPage = () => {
 
   const [post, setPost] = useState({
     name: "",
@@ -30,20 +29,20 @@ const PostPage = ({Container, Card}) => {
 
 
   return (
-    <Container className="mt-4">
-      <Card>
-        <div style="max-h-[500px] overflow-hidden">
-          <Card.Img variant="top" src={post.image}></Card.Img>
+    <div className="mt-4">
+      <div>
+        <div className="max-h-[500px] overflow-hidden">
+          <img className="mt-4" src={post.image}></img>
         </div>
-      <Card.Body>
-        <Card.Title>Name: {post.name}</Card.Title>
-        <Card.Subtitle className="mb-2">age: {post.age}</Card.Subtitle>
-        <Card.Subtitle className="mb-2">major: {post.major}</Card.Subtitle>
-        <Card.Subtitle className="mb-2">occupation: {post.occupation}</Card.Subtitle>
-        <Card.Text>Description: {post.bio}</Card.Text>
-      </Card.Body>
-      </Card>
-    </Container>
+      <div>
+        <h1>Name: {post.name}</h1>
+        <p className="mb-2">age: {post.age}</p>
+        <p className="mb-2">major: {post.major}</p>
+        <p className="mb-2">occupation: {post.occupation}</p>
+        <h2>Description: {post.bio}</h2>
+      </div>
+      </div>
+    </div>
   )
 }
 

@@ -3,10 +3,11 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import 'tailwindcss/tailwind.css';
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
-import 'bootstrap/dist/css/bootstrap.css'
 
-const NewPost = ({Container, Button, Form}) => {
+const NewPost = () => {
 
   const [post, setPost] = useState({
     name: "",
@@ -14,7 +15,7 @@ const NewPost = ({Container, Button, Form}) => {
     major: "",
     occupation: "",
     image: "",
-    bio: ""
+    contact: ""
   })
 
   const router = useRouter();
@@ -27,46 +28,38 @@ const NewPost = ({Container, Button, Form}) => {
   const handleSubmit = async e => {
     e.preventDefault() //send request html will refresh the page after you click submit and we dont want that to happen. We want to control how this form behaves.
     await axios.post('http://localhost:5500/posts', post) //I want to reach out to the backend server
-    router.push("/")
+    router.push("/Home")
   }
 
   return (
-    <Container className="mt-4">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Name:</Form.Label>
-          <Form.Control type="text" name="name" placeholder="name" onChange={handleChange} required/>
-        </Form.Group>
+    <div>
+      <NavBar />
+      <div className="mt-4">
+        <form className="flex flex-col" onSubmit={handleSubmit}>
+          <label>Name:</label>
+          <input className="border-2" type="text" name="name" placeholder="name" onChange={handleChange} required/>
 
-        <Form.Group>
-          <Form.Label>Age:</Form.Label>
-          <Form.Control type="text" name="age" placeholder="age" onChange={handleChange} required/>
-        </Form.Group>
+          <label>Age:</label>
+          <input className="border-2" type="text" name="age" placeholder="age" onChange={handleChange} required/>
           
-        <Form.Group>
-          <Form.Label>Major:</Form.Label>
-          <Form.Control type="text" name="major" placeholder="major" onChange={handleChange} required/>
-        </Form.Group>
+          <label>Major:</label>
+          <input className="border-2" type="text" name="major" placeholder="major" onChange={handleChange} required/>
 
-        <Form.Group>
-        <Form.Label>Occupation:</Form.Label>
-        <Form.Control type="text" name="occupation" placeholder="occupation" onChange={handleChange} required/>
-      </Form.Group>
+          <label>Occupation:</label>
+          <input className="border-2" type="text" name="occupation" placeholder="occupation" onChange={handleChange} required/>
 
-        <Form.Group>
-          <Form.Label>Image Url:</Form.Label>
-          <Form.Control type="text" name="image" placeholder="image url" onChange={handleChange} required/>
-        </Form.Group>
+          <label>Image Url:</label>
+          <input className="border-2" type="text" name="image" placeholder="image url" onChange={handleChange} required/>
 
-        <Form.Group>
-          <Form.Label>Bio:</Form.Label>
-          <Form.Control type="textarea" rows={6} name="bio" placeholder="bio" onChange={handleChange} required/>
-        </Form.Group>
-        <Button className="bg-blue-500 text-white" type="submit">
+          <label>Contact:</label>
+          <input className="border-2" type="text" name="contact" placeholder="contact" onChange={handleChange} required/>
+        </form>
+        <button className="rounded mt-4 mb-6 bg-blue-500 text-white px-4 py-2" type="button" onClick={handleSubmit}>
           Submit
-        </Button>
-      </Form>
-    </Container>
+        </button>
+      </div>
+      <Footer />
+    </div>
   )
 }
 

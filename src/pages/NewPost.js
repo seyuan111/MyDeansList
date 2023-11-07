@@ -12,9 +12,8 @@ const NewPost = () => {
   const [post, setPost] = useState({
     name: "",
     age: "",
-    major: "",
+    email: "",
     occupation: "",
-    image: "",
     contact: ""
   })
 
@@ -42,14 +41,11 @@ const NewPost = () => {
           <label>Age:</label>
           <input className="border-2" type="text" name="age" placeholder="age" onChange={handleChange} required/>
           
-          <label>Major:</label>
-          <input className="border-2" type="text" name="major" placeholder="major" onChange={handleChange} required/>
+          <label>email:</label>
+          <input className="border-2" type="text" name="email" placeholder="email" onChange={handleChange} required/>
 
           <label>Occupation:</label>
           <input className="border-2" type="text" name="occupation" placeholder="occupation" onChange={handleChange} required/>
-
-          <label>Image Url:</label>
-          <input className="border-2" type="text" name="image" placeholder="image url" onChange={handleChange} required/>
 
           <label>Contact:</label>
           <input className="border-2" type="text" name="contact" placeholder="contact" onChange={handleChange} required/>

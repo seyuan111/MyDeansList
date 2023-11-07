@@ -8,8 +8,7 @@ const Hero = () => {
     
     <div className="w-full h-[90%] text-center flex flex-col items-center justify-center px-4 text-white">
         <h1 className="font-bold text-2xl underline">The Deans List</h1>
-        <h1 className="text-[25px] mt-8 text-white">Where you can add your members</h1>
-        <p className="text-[20px] my-5 font-bold">This is like a business card. It is convenient in case you lose your business card. You can add it online</p>
+        <h1 className="text-[25px] mt-8 text-white">Where you can add your members for deans list, business cards, teams, etc.</h1>
         <p className="mb-5 font-bold">Add business cards now</p>
         <div className="text-white">
             <button className="bg-blue-500 text-white hover:bg-blue-900 rounded px-6 py-2 duration-300"><Link href="/NewPost">Add Members</Link></button>

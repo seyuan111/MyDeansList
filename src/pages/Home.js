@@ -13,7 +13,8 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`http://localhost:5500/posts/`)
-      setPosts(res.data)
+      const sortedPosts = res.data.sort((a, b) => a.name.localeCompare(b.name));
+      setPosts(sortedPosts);
     }
     fetchPosts()
   },[])
@@ -30,26 +31,20 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      <div className="mt-4">
-        <h1 className="text-xl font-bold mb-6">My Deans List:</h1>
+      <div className="mt-4 justify-center items-center w-full h-full">
+        <h1 className="text-2xl font-bold mb-6">My Deans List:</h1>
         {posts.map((post) => (
           <div className="mb-4" key={post._id}>
-            <div className="w-8 justify-center items-center">
-              <img variant="top" src={post.image}></img>
-              <div>
+              <div className="bg-gray-300 items-center flex flex-col grid-col-3">
                 <h1 className="my-6">Name: {post.name}</h1>
                 <p className="my-6">Age: {post.age}</p>
-                <p className="my-6">Major: {post.major}</p>
+                <p className="my-6">Email: {post.email}</p>
                 <p className="my-6">Occupation: {post.occupation}</p>
                 <p className="my-6">Contact: {post.contact}</p>
-                  <div className="flex">
-                    <Link href={`/posts/${post._id}`}>
-                      <button className="px-4 py-2 rounded mr-4 bg-blue-500 text-white">More Info</button>
-                    </Link>
-                      <button className="px-4 py-2 rounded mr-4 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</button>
+                  <div className="flex mb-6">
+                      <button className="px-4 py-2 rounded mr-4 duration-300 hover:bg-red-900 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</button>
                   </div>
               </div>
-            </div>
           </div>
         ))}
       </div>

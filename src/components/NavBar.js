@@ -14,8 +14,8 @@ const NavBar = () => {
   return (
     <div className="w-full h-[70px] bg-gray-400 py-10 z-10">
         <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
-          <div className="text-[teal] text-xl font-bold cursor-pointer">
-              <h1><Link href='/'>My Deans List</Link></h1>
+          <div className="text-[teal] text-2xl font-bold cursor-pointer">
+              <h1><Link href='/'>Deans List</Link></h1>
           </div>
           <div className="hidden md:flex">
             <ul className="flex text-white items-center text-xl">

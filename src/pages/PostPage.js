@@ -10,10 +10,8 @@ const PostPage = () => {
   const [post, setPost] = useState({
     name: "",
     age: "",
-    major: "",
     occupation: "",
-    image: "",
-    bio: ""
+    contact: ""
   })
 
   const router = useRouter();

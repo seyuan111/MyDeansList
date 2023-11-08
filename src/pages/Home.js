@@ -31,17 +31,18 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      <div className="mt-4 justify-center items-center w-full h-full">
+      <div className="mt-4 justify-center items-center mx-auto gap-4">
         <h1 className="text-2xl font-bold mb-6">My Deans List:</h1>
         {posts.map((post) => (
           <div className="mb-4" key={post._id}>
               <div className="bg-gray-300 items-center flex flex-col grid-col-3">
-                <h1 className="my-6">Name: {post.name}</h1>
-                <p className="my-6">Age: {post.age}</p>
-                <p className="my-6">Email: {post.email}</p>
-                <p className="my-6">Occupation: {post.occupation}</p>
-                <p className="my-6">Contact: {post.contact}</p>
+                <h1 className="my-4 text-xl font-bold">Name: {post.name}</h1>
+                <p className="my-4 text-xl">Age: {post.age}</p>
+                <p className="my-4 text-xl">Email: {post.email}</p>
+                <p className="my-4 text-xl">Occupation: {post.occupation}</p>
+                <p className="my-4 text-xl">Contact: {post.contact}</p>
                   <div className="flex mb-6">
+                      <button className="px-4 py-2 rounded mr-4 duration-300 hover:bg-blue-900 bg-blue-500 text-white"><Link href="/EditPost">Edit</Link></button>
                       <button className="px-4 py-2 rounded mr-4 duration-300 hover:bg-red-900 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</button>
                   </div>
               </div>

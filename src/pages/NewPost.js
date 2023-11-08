@@ -33,6 +33,7 @@ const NewPost = () => {
   return (
     <div>
       <NavBar />
+      <h1 className="font-bold text-xl mt-4">Add Post:</h1>
       <div className="mt-4">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <label>Name:</label>

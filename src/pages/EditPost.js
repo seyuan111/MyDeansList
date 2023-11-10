@@ -11,23 +11,19 @@ const EditPost = () => {
     const router = useRouter();
     const { id } = router.query;
   
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [email, setEmail] = useState('');
-    const [occupation, setOccupation] = useState('');
-    const [contact, setContact] = useState('');
+    const [post, setPost] = useState({
+      name: "",
+      age: "",
+      email: "",
+      occupation: "",
+      contact: ""
+    })
   
     useEffect(() => {
       if (id) {
-        axios
-          .get(`http://localhost:5500/posts/${id}`)
+        axios.get(`http://localhost:5500/posts/${id}`)
           .then((res) => {
-            const postData = res.data;
-            setName(postData.name);
-            setAge(postData.age);
-            setEmail(postData.email);
-            setOccupation(postData.occupation);
-            setContact(postData.contact);
+            setPost({...post, [e.target.name]: e.target.value})
           })
           .catch((error) => {
             console.error(error);
@@ -37,20 +33,13 @@ const EditPost = () => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const updatedPost = {
-        name,
-        age,
-        email,
-        occupation,
-        contact,
-      };
-  
-      try {
-        await axios.put(`http://localhost:5500/posts/${id}`, updatedPost);
-        router.push('/Home');
-      } catch (error) {
-        console.error('Update failed:', error);
-      }
+      axios.put(`http://localhost:5500/posts/${id}`)
+      .then((res) => {
+        router.push("/Home")
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     };
 
   return (
@@ -60,19 +49,19 @@ const EditPost = () => {
     <div className="mt-4">
       <form className="flex flex-col" onSubmit={handleSubmit}>
         <label>Name:</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} className="border-2" type="text" name="name" placeholder="name" required/>
+        <input value={post.name} onChange={(e) => setPost(e.target.value)} className="border-2" type="text" name="name" placeholder="name" required/>
 
         <label>Age:</label>
-        <input value={age} onChange={(e) => setAge(e.target.value)} className="border-2" type="text" name="age" placeholder="age" required/>
+        <input value={post.age} onChange={(e) => setPost(e.target.value)} className="border-2" type="text" name="age" placeholder="age" required/>
         
         <label>email:</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} className="border-2" type="text" name="email" placeholder="email" required/>
+        <input value={post.email} onChange={(e) => setPost(e.target.value)} className="border-2" type="text" name="email" placeholder="email" required/>
 
         <label>Occupation:</label>
-        <input value={occupation} onChange={(e) => setOccupation(e.target.value)} className="border-2" type="text" name="occupation" placeholder="occupation" required/>
+        <input value={post.occupation} onChange={(e) => setPost(e.target.value)} className="border-2" type="text" name="occupation" placeholder="occupation" required/>
 
         <label>Contact:</label>
-        <input value={contact} onChange={(e) => setContact(e.target.value)} className="border-2" type="text" name="contact" placeholder="contact" required/>
+        <input value={post.contact} onChange={(e) => setPost(e.target.value)} className="border-2" type="text" name="contact" placeholder="contact" required/>
       </form>
       <button className="rounded mt-4 mb-6 bg-blue-500 text-white px-4 py-2" type="button" onClick={handleSubmit}>
         Submit

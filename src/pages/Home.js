@@ -42,7 +42,6 @@ const Home = () => {
                 <p className="my-4 text-xl">Occupation: {post.occupation}</p>
                 <p className="my-4 text-xl">Contact: {post.contact}</p>
                   <div className="flex mb-6">
-                      <button className="px-4 py-2 rounded mr-4 duration-300 hover:bg-blue-900 bg-blue-500 text-white"><Link href="/EditPost">Edit</Link></button>
                       <button className="px-4 py-2 rounded mr-4 duration-300 hover:bg-red-900 bg-red-500 text-white" onClick={() => handleDelete(post._id)}>Delete</button>
                   </div>
               </div>

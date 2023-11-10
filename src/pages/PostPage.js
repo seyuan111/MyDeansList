@@ -30,7 +30,7 @@ const PostPage = () => {
     <div className="mt-4">
       <div>
         <div className="max-h-[500px] overflow-hidden">
-          <img className="mt-4" src={post.image}></img>
+          <img className="mt-4" src={post.image} />
         </div>
       <div>
         <h1>Name: {post.name}</h1>

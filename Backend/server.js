@@ -5,7 +5,13 @@ require('dotenv').config();
 
 const app = express()
 
-app.use(cors())
+app.use(cors(
+  {
+    origin: ["https://my-deans-list.vercel.app/,"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+))
 app.use(express.json())
 
 //how to connect to mongoose

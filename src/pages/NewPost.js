@@ -26,7 +26,7 @@ const NewPost = () => {
 
   const handleSubmit = async e => {
     e.preventDefault() //send request html will refresh the page after you click submit and we dont want that to happen. We want to control how this form behaves.
-    await axios.post('http://localhost:5500/posts', post) //I want to reach out to the backend server
+    await axios.post('https://concerned-frog-culottes.cyclic.app/posts', post) //I want to reach out to the backend server
     router.push("/Home")
   }
 

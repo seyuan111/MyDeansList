@@ -19,7 +19,7 @@ const PostPage = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get(`http://localhost:5500/posts/${id}`)
+      const res = await axios.get(`https://concerned-frog-culottes.cyclic.app/posts/${id}`)
       setPost(res.data)
     }
     fetchPost()

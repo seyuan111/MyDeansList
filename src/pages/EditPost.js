@@ -33,7 +33,7 @@ const EditPost = () => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      axios.put(`http://localhost:5500/posts/${id}`)
+      axios.put(`https://concerned-frog-culottes.cyclic.app/posts/${id}`)
       .then((res) => {
         router.push("/Home")
       })

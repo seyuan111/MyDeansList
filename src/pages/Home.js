@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(`http://localhost:5500/posts/`)
+      const res = await axios.get(`https://concerned-frog-culottes.cyclic.app/posts/`)
       const sortedPosts = res.data.sort((a, b) => a.name.localeCompare(b.name));
       setPosts(sortedPosts);
     }

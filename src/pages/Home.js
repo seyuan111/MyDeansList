@@ -21,7 +21,7 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try{
-      await axios.delete(`http://localhost:5500/posts/${id}`) //remove item from DB
+      await axios.delete(`https://my-deans-list.vercel.app/posts/${id}`) //remove item from DB
       setPosts(posts.filter((post) => post._id !== id)) //remove item from state
     } catch(error){
       console.log(`There is an issue deleteing this post`, error)
